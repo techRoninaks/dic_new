@@ -249,7 +249,7 @@ nav .mbr-section-btn {
 
 /*! Full-screen */
 .mbr-fullscreen .mbr-overlay {
-  min-height: 100vh; }
+  min-height: 70vh; }
 
 .mbr-fullscreen {
   display: flex;
@@ -262,6 +262,20 @@ nav .mbr-section-btn {
   min-height: 100vh;
   padding-top: 3rem;
   padding-bottom: 3rem; }
+  .mbr-halfscreen .mbr-overlay {
+    min-height: 30vh; }
+  
+  .mbr-halfscreen {
+    display: flex;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    min-height: 100vh;
+    padding-top: 3rem;
+    padding-bottom: 3rem; }
 
 /*! Map */
 .map {
@@ -456,3 +470,66 @@ nav .mbr-section-btn {
     margin-left: -8px; 
     margin-top: -8px; 
   }
+
+
+  div.scrollmenu {
+    background-color: rgb(255, 255, 255);
+    overflow: auto;
+    white-space: nowrap;
+    -ms-overflow-style: none;
+
+  }
+  div.scrollmenu img {
+    /* background-color: #777; */
+    height: 100px;
+    width: 200px;
+    opacity: .6;
+  }
+  div.scrollmenu img:hover {
+    /* background-color: #777; */
+    opacity: 1;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    
+  }
+  
+  /* div.scrollmenu a:hover {
+    background-color: #777;
+    /* opacity: none; */
+  } */
+  div.scrollmenu::-webkit-scrollbar { 
+    display: none;
+    /* width: 0px;
+    background: transparent; */
+}
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */
+
+#contentbrowser{
+  margin-right:-17px!important;
+  margin-bottom:-17px!important;
+  overflow-y:hidden;
+  overflow-x:scroll;
+}
+  
+.newsbutton{
+  border: 1px solid #eeeeee;
+  padding: 5px;
+  border-radius: 25px;
+  background: transparent;
+  color: #eeeeee;
+  font-size: 20px;
+  align: center;
+
+}
