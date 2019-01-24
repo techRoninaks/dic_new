@@ -1,7 +1,7 @@
 <?php
         require "init.php";//needed for connection with database
         
-         $sql_query =  "SELECT * FROM `data_pdf`";//SQL command
+         $sql_query =  "SELECT * FROM `TABLE 7`";//SQL command
          $result = mysqli_query($con,$sql_query);
         while($row=mysqli_fetch_array($result)){
             //  echo  nl2br($row[0] .":". $row[1].":".$row[2].":".$row[3].":".$row[4]."\n");//returning results 
