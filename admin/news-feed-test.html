@@ -34,46 +34,6 @@
 
 </head>
 <body>
-    <style>
-        .button3 {
-          display: inline-block;
-          border-radius: 4px;
-          border: none;
-          background-color: #008CBA;
-          color: white;
-          padding: 5px 15px;
-          text-align: center;
-          transition: all 0.5s;
-          cursor: pointer;
-          margin: 5px;
-        }
-
-        .button3 span {
-          cursor: pointer;
-          display: inline-block;
-          position: relative;
-          transition: 0.5s;
-        }
-
-        .button3 span:after {
-          content: '\00bb';
-          position: absolute;
-          opacity: 0;
-          top: 0;
-          right: -20px;
-          transition: 0.5s;
-        }
-
-        .button3:hover span {
-          padding-right: 25px;
-        }
-
-        .button3:hover span:after {
-          opacity: 1;
-          right: 0;
-        }
-    </style>
-    
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg" w3-include-html="sidenav.html"></div>
     <div class="main-panel">
@@ -161,14 +121,6 @@
           } else {
             y.style.display = "inline";
           }
-        }
-        function finSubmit() {
-            var txt;
-            var r = confirm("Press 'OK' to confirm");
-            if (r == true) {
-                txt = "Feed Added";
-            }
-            document.getElementById("submit").innerHTML = txt;
         }
         fetch_news();
 	</script>
