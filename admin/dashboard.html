@@ -91,20 +91,14 @@ function showData() {
 	<script src="assets/js/demo.js"></script>
 
 	<script type="text/javascript">
-    	$(document).ready(function(){
-
+    		includeHTML();
+		$(document).ready(function(){
         	demo.initChartist();
 
-        	$.notify({
-            	icon: 'pe-7s-gift',
-            	message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
-
-            },{
-                type: 'info',
-                timer: 4000
-            });
-
     	});
+		window.onload = function(){
+			document.getElementsByClassName('navbar-brand')[0].innerHTML = "Test";
+		};
 	</script>
 
 </html>
