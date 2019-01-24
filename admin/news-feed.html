@@ -34,44 +34,6 @@
 
 </head>
 <body>
-    <style>
-        .button {
-          display: inline-block;
-          border-radius: 4px;
-          border: none;
-          color: #000000;
-          text-align: center;
-          transition: all 0.5s;
-          cursor: pointer;
-          margin: 5px;
-        }
-
-        .button span {
-          cursor: pointer;
-          display: inline-block;
-          position: relative;
-          transition: 0.5s;
-        }
-
-        .button span:after {
-          content: '\00bb';
-          position: absolute;
-          opacity: 0;
-          top: 0;
-          right: -20px;
-          transition: 0.5s;
-        }
-
-        .button:hover span {
-          padding-right: 25px;
-        }
-
-        .button:hover span:after {
-          opacity: 1;
-          right: 0;
-        }
-    </style>
-    
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg" w3-include-html="sidenav.html"></div>
     <div class="main-panel">
@@ -84,7 +46,7 @@
                             <div class="header">
                                 <h4 class="title">News Feed</h4>
                                 <p class="category">Control your news feed</p><br>
-                                <pre><button class="button" style="vertical-align:middle" onclick="hideShow()"><span>Add New</span></button></pre><br>
+                                <pre><button class="button3 button3" style="vertical-align:middle" onclick="hideShow()"><span>Add New</span></button></pre><br>
                                 <div style="display:none;" id="addNews">
                                 <form id="upnews">
                                     <label>Headline</label>
@@ -103,7 +65,8 @@
                                     </form>
                                     <br></div>
                                     <div style="display:inline" id="news">
-                                        <p id="fetch"></p>
+                                        <div class="content table-responsive table-full-width" id="fetch">
+                                        </div>
                                     </div>
                             </div>
                         </div>
