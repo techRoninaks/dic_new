@@ -17,11 +17,25 @@ function includeHTML() {
             elmnt.removeAttribute("w3-include-html");
             includeHTML();
           }
-        } 
+        }; 
         xhttp.open("GET", file, true);
         xhttp.send();
         /* Exit the function: */
         return;
       }
     }
+}
+
+function delete_news(id){
+	var xhr =  new XMLHttpRequest();
+	var params = 'id='+id;
+    this.responseType = 'text';
+    xhr.onreadystatechange  =  function() {
+        if (this.readyState == 4 && this.status == 200) {//if result successful
+                document.getElementById("fetch").innerHTML = "<table class='table table-hover table-striped'><tbody>" + xhr.responseText + "</tbody></table>";
+        }
+    };
+    xhr.open("POST", "delete-news.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(params);
 }
