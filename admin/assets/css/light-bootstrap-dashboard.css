@@ -1014,7 +1014,7 @@ fieldset[disabled] .btn-neutral.active {
     -webkit-box-shadow: none;
     box-shadow: none;
     outline: 0 !important;
-    color: #333333;
+    color: #FFFFFF;
 }
 
 .has-success .form-control,
@@ -3867,3 +3867,4 @@ fieldset[disabled] .btn-neutral.active {
         -webkit-overflow-scrolling: touch;
     }
 }
+

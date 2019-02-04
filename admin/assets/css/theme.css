@@ -1,0 +1,101 @@
+#buttonC{
+    position: relative ; 
+    /* right: 20px;  */
+    top: -37px;
+    color: rgb(255, 255, 255); 
+    border-radius: 3px; 
+    border: 0ch;
+    background:#45c0fd; 
+    
+}
+@media only screen and (max-width: 500px) {
+    #buttonC{
+        position: relative;
+        left: 0;
+        top: 0;
+        margin-bottom: 10px;
+    }
+    .model{
+        margin-top: 25px;
+    }
+  }
+
+.blurred-box{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    overflow: hidden;
+  }
+  
+  .blurred-box:after{
+   content: '';
+   width: 100%;
+   height: 100%;
+   background: inherit; 
+   position: absolute;
+   box-shadow: inset 0 0 0 200px rgba(255,255,255,0.05);
+   filter: blur(10px);
+  }
+  .iedit{
+      background: url(../img/edit.png);
+  }
+
+  .editBTN{
+      color: red;
+      size: 15dp;
+      background: url(/assets/img/edit.png) no-repeat left center;
+  }
+
+  .editBTN span.icon{
+      text-emphasis: none;
+      
+  }
+
+  .btn-fill-red{
+    margin-right: 5px;
+    position: relative;
+    background: transparent;
+    border: 2px solid #e34234;
+    color: black;
+  }
+  .btn-fill-red:hover{
+
+    border: 2px solid  rgba(255, 0, 0, 0.76);
+    color: rgba(255, 0, 0, 0.76);
+  }
+
+  .btn.edit {
+
+    background:transparent;
+    background-image: url(/assets/img/edit.png);
+    width: 30px;
+    height: 30px;
+    background-size: 100% 100%;
+    border: none;
+    margin: 5px;
+    margin-right:10px; 
+   }
+   .btn.delete {
+
+    background:transparent;
+    background-image: url(/assets/img/delete.png);
+    width: 30px !important;
+    height: 30px !important;
+    background-size: 100% 100%;
+    border: none;
+    margin: 5px;
+    margin-right:10px; 
+   }
+
+   .model{
+    position: relative ;
+    cursor: pointer;
+   }
+
+   .hidetext{
+    background-color: transparent;
+    border: 0px solid;
+    height: 20px;
+    width: 80px;
+   }
