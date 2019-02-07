@@ -92,7 +92,8 @@ function read_news(id){
     xhr.send(params);
 }
 function load_page(){
-    window.location = 'http://understandable-blin.hostingerapp.com/zzDIC/admin/news-feed.html';
+    var page = window.location.protocol+"//"+window.location.hostname+"/zzDIC/admin/news-feed.html";
+    window.location = page;
 }
 function show_image(id){
 	var xhr =  new XMLHttpRequest();
@@ -119,10 +120,14 @@ function edit_news(id){
     xhr.onreadystatechange  =  function() {
         if (this.readyState == 4 && this.status == 200) {//if result successful
                 var data = xhr.responseText.split(":");
+                if(data[0] !== ""){
                 document.getElementById("Headline").value = data[0];
                 document.getElementById("Subheadline").value = data[1];
                 document.getElementById("News").value = data[2];
                 document.getElementById("editId").value = data[3];
+        } else {
+            alert('Edit Failed!'); load_page();
+        }
         }
     };
     xhr.open("POST", "read-news.php", true);

@@ -78,12 +78,14 @@
             	    }
             	}
          }
+        
+        echo "<script src='assets/js/scripts.js' type='text/javascript'></script>";
          
         if ($counter == 2 || $counter == 1){
-            echo "<script>alert('Upload successful!');window.location = 'http://understandable-blin.hostingerapp.com/zzDIC/admin/news-feed.html';</script>";
+            echo "<script>alert('Upload successful!');load_page();</script>";
         }
     	else if ($counter < 0){
-    	    echo "<script>alert('Edit successful!');window.location = 'http://understandable-blin.hostingerapp.com/zzDIC/admin/news-feed.html';</script>";
+    	    echo "<script>alert('Edit successful!');load_page();</script>";
         }
         else{
             echo "<script>alert('Error uploading news.\nOK to reload!'); location.reload();</script>";
