@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<link rel="icon" type="image/png" href="assets/img/logo-red.ico">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>News Feed</title>
 
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
-
+    
+    <link href="assets/css/bootstrapAlert.css" rel="stylesheet" />
     <link href="assets/css/action-buttons.css" rel="stylesheet" />
     <!-- Bootstrap core CSS     -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -29,11 +30,9 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-     <script src="assets/js/fetchnews.js" type="text/javascript"></script>
-     <script src="assets/js/update-news.js" type="text/javascript"></script>
-
 </head>
 <body>
+
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg" w3-include-html="sidenav.html"></div>
     <div class="main-panel">
@@ -46,23 +45,26 @@
                             <div class="header">
                                 <h4 class="title">News Feed</h4>
                                 <p class="category">Control your news feed</p><br>
-                                <pre><button class="button3 button3" style="vertical-align:middle" onclick="hideShow()"><span>Add New</span></button></pre><br>
+                                <pre><button class="button3 button3" style="vertical-align:middle" onclick="hideShow()"><span>Add New</span></button><button class="button3 button3" style="vertical-align:middle" onclick="delete_news(-1);"><span>Clear all</span></button></pre><br>
                                 <div style="display:none;" id="addNews">
-                                <form id="upnews">
-                                    <label>Headline</label>
-                                    <textarea class="form-control" name="Headline" placeholder="Headline" data-form-field="Headline" id="Headline"></textarea>
+                                <form enctype="multipart/form-data" action="upload-news.php" method="post">
+                                    <input type="textbox" id="editId" name="editId" style='display:none'><br>
+                                    <label>Headline</label><p style="display:inline" class='rq'>*</p>
+                                    <textarea class="form-control" name="Headline" placeholder="Headline" data-form-field="Headline" id="Headline" required></textarea>
                                     <br>
                                     <label>Sub-Headline</label>
-                                    <textarea class="form-control" name="Sub-Headline" placeholder="Sub-headline" data-form-field="Headline" id="Subheadline"></textarea>
+                                    <textarea class="form-control" name="Subheadline" placeholder="Sub-headline" data-form-field="Headline" id="Subheadline"></textarea>
                                     <br>
-                                    <label>News</label>
-                                    <textarea class="form-control" name="News" rows="7" placeholder="News" data-form-field="News" id="News"></textarea>
+                                    <label>News</label><p style="display:inline" class='rq'>*</p>
+                                    <textarea class="form-control" name="News" rows="7" placeholder="News" data-form-field="News" id="News" required></textarea>
                                     <br>
                                     <label>Select image to upload:</label>
-                                    <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*" multiple>
+                                    <input type="file" name="fileToUpload" id="fileToUpload" accept="image/*" src=''>
                                     <br>
-                                    <button type="submit" class="btn btn-secondary-outline" form="newsform" value="Submit" onclick="update_news()" id="upnews">UPDATE</button>
+                                    <button type="submit" style="display:inline" class="btn btn-secondary-outline" value="Submit" id="submitbutton">UPLOAD</button>
+                                    <button type="button" class="btn btn-secondary-outline" value="Cancel" onclick="load_page();">CANCEL</button>
                                     </form>
+                                    
                                     <br></div>
                                     <div style="display:inline" id="news">
                                         <div class="content table-responsive table-full-width" id="fetch">
@@ -75,7 +77,6 @@
                 </div>
             </div>
         </div>
-            
             
         <footer class="footer" w3-include-html="footer.html"></footer>
 
@@ -108,21 +109,7 @@
 	  <script src="assets/js/demo.js"></script>
 
     <script type="text/javascript">
-	      includeHTML();
-        function hideShow() {
-          var x = document.getElementById("addNews");
-          if (x.style.display == "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-          var y = document.getElementById("news");
-            if (y.style.display == "inline") {
-            y.style.display = "none";
-          } else {
-            y.style.display = "inline";
-          }
-        }
+	    includeHTML();
         fetch_news();
 	</script>
 </html>
