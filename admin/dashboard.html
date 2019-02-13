@@ -30,31 +30,9 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
+    <script type="text/javascript" src='assets/js/scripts.js'> </script>
     <script>
-function showData() {
-    var xhr =  new XMLHttpRequest();
-    this.responseType = 'text';
-    xhr.onreadystatechange  =  function() {
-        var ourData = xhr.response;
-        if (this.readyState == 4 && this.status == 200) {//if result successful
-            console.log(xhr.responseText);
-            if(xhr.responseText != "check "){
-                document.getElementById("myDIV").style.backgroundColor = "#6f42c1";
-                document.getElementById("myDIV").style.opacity= ".1";
-                document.getElementById("myDIV").style.filter = "alpha(opacity=10)";
-                var data = xhr.responseText.split("`");
-                alert("Session over please login again");
-                window.location.href=data[1];
-            }
-        }
-        
-    };
-    xhr.open("post", "sessionvalidator.php", true);
-    xhr.setRequestHeader("Content-type", "text/plain");
-    xhr.send();
-
-  }  
-  showData();
+        checksession();
     </script>
 
 </head>
