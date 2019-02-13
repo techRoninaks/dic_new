@@ -26,18 +26,25 @@ function includeHTML() {
     }
 }
 
-function delete_news(id){
-	var xhr =  new XMLHttpRequest();
-	var params = 'id='+id;
-    this.responseType = 'text';
-    xhr.onreadystatechange  =  function() {
-        if (this.readyState == 4 && this.status == 200) {//if result successful
-                document.getElementById("fetch").innerHTML = "<table class='table table-hover table-striped'><tbody>" + xhr.responseText + "</tbody></table>";
-        }
-    };
-    xhr.open("POST", "delete-news.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(params);
+function hideShow() {
+        var x = document.getElementById("addNews");
+          if (x.style.display == "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        var y = document.getElementById("news");
+            if (y.style.display == "inline") {
+            y.style.display = "none";
+          } else {
+            y.style.display = "inline";
+          }
+        var z = document.getElementById("editNews");
+            if (z.style.visibility == "visible") {
+            z.style.visibility = "hidden";
+          } else {
+            z.style.visibility = "visible";
+          }    
 }
 
 function delete_news(id){
@@ -46,12 +53,14 @@ function delete_news(id){
     this.responseType = 'text';
     xhr.onreadystatechange  =  function() {
         if (this.readyState == 4 && this.status == 200) {//if result successful
-                document.getElementById("fetch").innerHTML = "<table class='table table-hover table-striped'><thead><th>ID</th><th>DATE</th><th>HEADLINE</th><th>SUBHEADLINE</th><th>CONTENT</th><th>ACTIONS</th></thead><tbody>" + xhr.responseText + "</tbody></table>";
+                document.getElementById("fetch").innerHTML = "<table class='table table-hover table-striped'><tbody>" + xhr.responseText + "</tbody></table>";
         }
     };
-    xhr.open("POST", "edit-news.php", true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(params);
+    if(confirm("Delete Records?")){
+        xhr.open("POST", "delete-news.php", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(params);
+    }
 }
 
 function fetch_news() {
@@ -59,26 +68,72 @@ function fetch_news() {
     this.responseType = 'text';
     xhr.onreadystatechange  =  function() {
         if (this.readyState == 4 && this.status == 200) {//if result successful
-                document.getElementById("fetch").innerHTML = "<table class='table table-hover table-striped'>" + xhr.responseText + "</table>";
+                document.getElementById("fetch").innerHTML = "<table class='table table-hover table-striped' id='editNews' style='visibility:visible'>" + xhr.responseText + "</table>";
         }
     };
-    xhr.open("GET", "fetch-news.php", true);
-    xhr.setRequestHeader("Content-type", "text/plain");
-    xhr.send();
+        xhr.open("GET", "fetch-news.php", true);
+        xhr.setRequestHeader("Content-type", "text/plain");
+        xhr.send();
 }
-function update_news(){
 
-    var data1 = document.getElementById("Headline").value;
-    var data2 = document.getElementById("Subheadline").value;
-    var data3 = document.getElementById("News").value;
-    var xhr =  new XMLHttpRequest();
-    this.responseType = 'valom nadakuo?';
+
+function read_news(id){
+	var xhr =  new XMLHttpRequest();
+	var params = 'id='+id;
+    this.responseType = 'text';
     xhr.onreadystatechange  =  function() {
         if (this.readyState == 4 && this.status == 200) {//if result successful
-                //console.log(xhr.responseText);
-                //document.getElementById("upnews").value;
+            var data = xhr.responseText.split(":");
+            document.getElementById("fetch").innerHTML ="<div><pre><label>HEADLINE</label><pre>"+data[0]+"</pre><br><label>SUB-HEADLINE</label><pre>"+data[1]+"</pre><br><label>NEWS</label><pre>"+data[2]+"</pre></pre></div><button class='btn btn-secondary-outline' value='Back' onclick = 'load_page();'>RETURN</button>";
+            }
+    };
+    xhr.open("POST", "read-news.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(params);
+}
+function load_page(){
+    var page = window.location.protocol+"//"+window.location.hostname+"/zzDIC/admin/news-feed.html";
+    window.location = page;
+}
+function show_image(id){
+	var xhr =  new XMLHttpRequest();
+	var params = 'id='+id;
+    this.responseType = 'text';
+    xhr.onreadystatechange  =  function() {
+        if (this.readyState == 4 && this.status == 200) {//if result successful
+            if(xhr.responseText.startsWith("<pre")){
+                document.getElementById("fetch").innerHTML ="<div><pre>"+xhr.responseText + "</pre></div><table><tr><button class='btn btn-secondary-outline' value='Back' onclick = 'load_page();'>RETURN</button></tr></table>";
+            }else{
+                alert('Image not found!');
+            }
         }
     };
+    xhr.open("POST", "show-image.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(params);
+}
+function edit_news(id){
+    hideShow();
+    var xhr =  new XMLHttpRequest();
+    var params = 'id='+id;
+    this.responseType = 'text';
+    xhr.onreadystatechange  =  function() {
+        if (this.readyState == 4 && this.status == 200) {//if result successful
+                var data = xhr.responseText.split(":");
+                if(data[0] !== ""){
+                document.getElementById("Headline").value = data[0];
+                document.getElementById("Subheadline").value = data[1];
+                document.getElementById("News").value = data[2];
+                document.getElementById("editId").value = data[3];
+        } else {
+            alert('Edit Failed!'); load_page();
+        }
+        }
+    };
+    xhr.open("POST", "read-news.php", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(params);
+}
     if(confirm("Press 'OK' to confirm")){
         xhr.open("POST", "update-news.php", true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -257,5 +312,3 @@ function backB(){
     document.getElementById('formedit').hidden = true;
     document.getElementById('tableform').hidden = false;
 }
-
-
