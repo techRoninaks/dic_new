@@ -1,5 +1,5 @@
 <?php
-	require "init-admin.php"; 
+	require "init.php"; 
 
     $id = $_POST["id"];
     $sql_query =  "SELECT * FROM `news` WHERE `ID` = $id";

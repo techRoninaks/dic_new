@@ -1,5 +1,5 @@
 <?php
-	require "init-admin.php";
+	require "init.php";
     $id = $_POST["id"];
     $counter = 0;
     $target_dir = "assets/img/news";
