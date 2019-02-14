@@ -2,7 +2,9 @@
 	require "init.php";
     $id = $_POST["id"];
     $counter = 0;
-    $target_dir = "assets/img/news";
+    $fullpath = dirname(__FILE__);
+    $assets_dir = str_replace('php','img/news/',$fullpath);
+    $target_dir = $assets_dir;
     if($id == -1){
         $sql_query =  "DELETE FROM `news`;";//SQL command
         $result = mysqli_query($con,$sql_query);
@@ -13,7 +15,7 @@
         $result = mysqli_query($con,$sql_query);
     }
     if(file_exists($target_dir) && $counter == 0){ //check if image file exists
-        $files = glob($target_dir."/*"); // get all file names
+        $files = glob($target_dir."*"); // get all file names
         foreach($files as $file){
             $imageFileType = strtolower(pathinfo($file,PATHINFO_EXTENSION));
             $bname = basename($file,".".$imageFileType);
@@ -23,7 +25,7 @@
         }
     }
     else if(file_exists($target_dir) && $counter == 1){
-        $files = glob($target_dir."/*"); // get all file names
+        $files = glob($target_dir."*"); // get all file names
         foreach($files as $file){ // iterate files
             if(is_file($file)){
                 unlink($file); 
