@@ -1,20 +1,13 @@
-<?php
+<?php 
+    $dbname = "u694003942_dicd";
+    $username = "u694003942_dicd";
+    $password = "qwerty";
+    $servername = "localhost";
 
-    // header("Access-Control-Allow-Origin: *");    
-    $db_name = "mysql";
-    $user_name = "root";
-    $user_pass = "";
-    $server_name = "localhost";
-
-    $con = mysqli_connect($server_name,$user_name,$user_pass,$db_name);
-    $success = "Hello";
-    
-    if(!$con)
-    {
-         // echo json_encode(array("response"=>"Cannot connect to database. ".mysqli_connect_error()));
-    }
-    else
-    {
-        // echo "success";
+    // Create connection
+    $con = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($con->connect_error) {
+       die("Connection failed: " . $con->connect_error);
     }
 ?>

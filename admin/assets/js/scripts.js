@@ -57,7 +57,7 @@ function delete_news(id){
         }
     };
     if(confirm("Delete Records?")){
-        xhr.open("POST", "delete-news.php", true);
+        xhr.open("POST", "assets/php/delete-news.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(params);
     }
@@ -71,7 +71,7 @@ function fetch_news() {
                 document.getElementById("fetch").innerHTML = "<table class='table table-hover table-striped' id='editNews' style='visibility:visible'>" + xhr.responseText + "</table>";
         }
     };
-        xhr.open("GET", "fetch-news.php", true);
+        xhr.open("GET", "assets/php/fetch-news.php", true);
         xhr.setRequestHeader("Content-type", "text/plain");
         xhr.send();
 }
@@ -87,7 +87,7 @@ function read_news(id){
             document.getElementById("fetch").innerHTML ="<div><pre><label>HEADLINE</label><pre>"+data[0]+"</pre><br><label>SUB-HEADLINE</label><pre>"+data[1]+"</pre><br><label>NEWS</label><pre>"+data[2]+"</pre></pre></div><button class='btn btn-secondary-outline' value='Back' onclick = 'load_page();'>RETURN</button>";
             }
     };
-    xhr.open("POST", "read-news.php", true);
+    xhr.open("POST", "assets/php/read-news.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params);
 }
@@ -108,7 +108,7 @@ function show_image(id){
             }
         }
     };
-    xhr.open("POST", "show-image.php", true);
+    xhr.open("POST", "assets/php/show-image.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params);
 }
@@ -130,17 +130,9 @@ function edit_news(id){
         }
         }
     };
-    xhr.open("POST", "read-news.php", true);
+    xhr.open("POST", "assets/php/read-news.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params);
-}
-    if(confirm("Press 'OK' to confirm")){
-        xhr.open("POST", "update-news.php", true);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        var params = 'Headline='+data1+'&Subheadline='+data2+'&News='+data3;
-        xhr.send(params);
-        location.reload();
-    }   
 }
 
 var caller1 = "";
@@ -182,7 +174,7 @@ function checksession() {
 //to toggle hidden div's incase of adduser
   function addrow(caller){
     caller1 = caller;
-    console.log("editcaller" + caller)
+    console.log("editcaller" + caller);
     document.getElementById('formedit').hidden = false;
     document.getElementById('tableform').hidden = true;
     //reseting the value of form
