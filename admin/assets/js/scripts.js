@@ -3,61 +3,61 @@ function includeHTML() {
     /* Loop through a collection of all HTML elements: */
     z = document.getElementsByTagName("*");
     for (i = 0; i < z.length; i++) {
-      elmnt = z[i];
-      /*search for elements with a certain atrribute:*/
-      file = elmnt.getAttribute("w3-include-html");
-      if (file) {
-        /* Make an HTTP request using the attribute value as the file name: */
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4) {
-            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-            /* Remove the attribute, and call this function once more: */
-            elmnt.removeAttribute("w3-include-html");
-            includeHTML();
-          }
-        }; 
-        xhttp.open("GET", file, true);
-        xhttp.send();
-        /* Exit the function: */
-        return;
-      }
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+            /* Make an HTTP request using the attribute value as the file name: */
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                    if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                    /* Remove the attribute, and call this function once more: */
+                    elmnt.removeAttribute("w3-include-html");
+                    includeHTML();
+                }
+            };
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            /* Exit the function: */
+            return;
+        }
     }
 }
 
 function hideShow() {
-        var x = document.getElementById("addNews");
-          if (x.style.display == "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        var y = document.getElementById("news");
-            if (y.style.display == "inline") {
-            y.style.display = "none";
-          } else {
-            y.style.display = "inline";
-          }
-        var z = document.getElementById("editNews");
-            if (z.style.visibility == "visible") {
-            z.style.visibility = "hidden";
-          } else {
-            z.style.visibility = "visible";
-          }    
+    var x = document.getElementById("addNews");
+    if (x.style.display == "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+    var y = document.getElementById("news");
+    if (y.style.display == "inline") {
+        y.style.display = "none";
+    } else {
+        y.style.display = "inline";
+    }
+    var z = document.getElementById("editNews");
+    if (z.style.visibility == "visible") {
+        z.style.visibility = "hidden";
+    } else {
+        z.style.visibility = "visible";
+    }
 }
 
 function delete_news(id){
-  var xhr =  new XMLHttpRequest();
-  var params = 'id='+id;
+    var xhr =  new XMLHttpRequest();
+    var params = 'id='+id;
     this.responseType = 'text';
     xhr.onreadystatechange  =  function() {
         if (this.readyState == 4 && this.status == 200) {//if result successful
-                document.getElementById("fetch").innerHTML = "<table class='table table-hover table-striped'><tbody>" + xhr.responseText + "</tbody></table>";
+            document.getElementById("fetch").innerHTML = "<table class='table table-hover table-striped'><tbody>" + xhr.responseText + "</tbody></table>";
         }
     };
     if(confirm("Delete Records?")){
-        xhr.open("POST", "assets/php/delete-news.php", true);
+        xhr.open("POST", "delete-news.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(params);
     }
@@ -68,26 +68,26 @@ function fetch_news() {
     this.responseType = 'text';
     xhr.onreadystatechange  =  function() {
         if (this.readyState == 4 && this.status == 200) {//if result successful
-                document.getElementById("fetch").innerHTML = "<table class='table table-hover table-striped' id='editNews' style='visibility:visible'>" + xhr.responseText + "</table>";
+            document.getElementById("fetch").innerHTML = "<table class='table table-hover table-striped' id='editNews' style='visibility:visible'>" + xhr.responseText + "</table>";
         }
     };
-        xhr.open("GET", "assets/php/fetch-news.php", true);
-        xhr.setRequestHeader("Content-type", "text/plain");
-        xhr.send();
+    xhr.open("GET", "fetch-news.php", true);
+    xhr.setRequestHeader("Content-type", "text/plain");
+    xhr.send();
 }
 
 
 function read_news(id){
-	var xhr =  new XMLHttpRequest();
-	var params = 'id='+id;
+    var xhr =  new XMLHttpRequest();
+    var params = 'id='+id;
     this.responseType = 'text';
     xhr.onreadystatechange  =  function() {
         if (this.readyState == 4 && this.status == 200) {//if result successful
             var data = xhr.responseText.split(":");
             document.getElementById("fetch").innerHTML ="<div><pre><label>HEADLINE</label><pre>"+data[0]+"</pre><br><label>SUB-HEADLINE</label><pre>"+data[1]+"</pre><br><label>NEWS</label><pre>"+data[2]+"</pre></pre></div><button class='btn btn-secondary-outline' value='Back' onclick = 'load_page();'>RETURN</button>";
-            }
+        }
     };
-    xhr.open("POST", "assets/php/read-news.php", true);
+    xhr.open("POST", "read-news.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params);
 }
@@ -96,8 +96,8 @@ function load_page(){
     window.location = page;
 }
 function show_image(id){
-	var xhr =  new XMLHttpRequest();
-	var params = 'id='+id;
+    var xhr =  new XMLHttpRequest();
+    var params = 'id='+id;
     this.responseType = 'text';
     xhr.onreadystatechange  =  function() {
         if (this.readyState == 4 && this.status == 200) {//if result successful
@@ -108,7 +108,7 @@ function show_image(id){
             }
         }
     };
-    xhr.open("POST", "assets/php/show-image.php", true);
+    xhr.open("POST", "show-image.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params);
 }
@@ -119,21 +119,22 @@ function edit_news(id){
     this.responseType = 'text';
     xhr.onreadystatechange  =  function() {
         if (this.readyState == 4 && this.status == 200) {//if result successful
-                var data = xhr.responseText.split(":");
-                if(data[0] !== ""){
+            var data = xhr.responseText.split(":");
+            if(data[0] !== ""){
                 document.getElementById("Headline").value = data[0];
                 document.getElementById("Subheadline").value = data[1];
                 document.getElementById("News").value = data[2];
                 document.getElementById("editId").value = data[3];
-        } else {
-            alert('Edit Failed!'); load_page();
-        }
+            } else {
+                alert('Edit Failed!'); load_page();
+            }
         }
     };
-    xhr.open("POST", "assets/php/read-news.php", true);
+    xhr.open("POST", "read-news.php", true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(params);
 }
+
 
 var caller1 = "";
 var uid;
@@ -148,7 +149,7 @@ function checksession() {
             var statusText = xhr.responseText.split(":");;
             if(statusText[0] != "check"){//if session is not correct
                 //styling the background of session alert
-                document.getElementById("myDIV").style.background = "inherit"; 
+                document.getElementById("myDIV").style.background = "inherit";
                 document.getElementById("myDIV").style.position="absolute";
                 document.getElementById("myDIV").style.boxShadow = "inset 0 0 0 200px rgba(255,255,255,0.05)";
                 document.getElementById("myDIV").style.filter= "blur(10px)";
@@ -160,7 +161,7 @@ function checksession() {
                 //storing data into session variables
                 sessionStorage.username = statusText[1];
                 sessionStorage.password = statusText[2];
-                sessionStorage.type = statusText[4];   
+                sessionStorage.type = statusText[4];
             }
         }
         
@@ -168,31 +169,31 @@ function checksession() {
     xhr.open("post", "assets/php/sessionvalidator.php", true);
     xhr.setRequestHeader("Content-type", "text/plain");
     xhr.send();
-
-  }  
+    
+}
 
 //to toggle hidden div's incase of adduser
-  function addrow(caller){
+function addrow(caller){
     caller1 = caller;
-    console.log("editcaller" + caller);
+    console.log("editcaller" + caller)
     document.getElementById('formedit').hidden = false;
     document.getElementById('tableform').hidden = true;
     //reseting the value of form
     if(caller =="adduser"){
-        document.getElementById("formdata1").value = "Username"; 
-        document.getElementById("formdata2").value = "Email"; 
-        document.getElementById("formdata3").value = "Password"; 
+        document.getElementById("formdata1").value = "Username";
+        document.getElementById("formdata2").value = "Email";
+        document.getElementById("formdata3").value = "Password";
         document.getElementById("input").innerHTML = "Previlage" +"<b class='caret'></b>";
     }
-  }
+}
 
-  //to toggle hidden div's and fetch current data and pass to editor incase of edituser
-  function editrow(caller, id){
+//to toggle hidden div's and fetch current data and pass to editor incase of edituser
+function editrow(caller, id){
     uid = id;
     caller1 = caller;
     document.getElementById('formedit').hidden = false;
     document.getElementById('tableform').hidden = true;
-
+    
     //fetching data from table to e passed to edit form
     var username = document.getElementById(uid+"1").innerText;
     var email =  document.getElementById(uid+"2").innerText;
@@ -200,14 +201,14 @@ function checksession() {
     var type =  document.getElementById(uid+"4").innerText;
     //  console.log(type);
     if(caller =="edituser"){
-        document.getElementById("formdata1").value = username; 
-        document.getElementById("formdata2").value = email; 
-        document.getElementById("formdata3").value = password; 
+        document.getElementById("formdata1").value = username;
+        document.getElementById("formdata2").value = email;
+        document.getElementById("formdata3").value = password;
         document.getElementById("input").innerHTML = type +"<b class='caret'></b>";
     }
-  }
-  
-//Replace  caret on form 
+}
+
+//Replace  caret on form
 function replaceText(str){
     document.getElementById('input').innerHTML = str +"<b class='caret'></b>";
 }
@@ -227,14 +228,14 @@ function loadtable(){
         }
         
     };
-
+    
     xhr.open("GET", "assets/php/admintable.php", true);
     xhr.setRequestHeader("Content-type", "text/plain");
     xhr.send();
+    
+}
 
-  }
-
-  function update(ourData){
+function update(ourData){
     ourData = ourData.split(':');
     document.getElementById("myTable").innerHTML = ourData[0];
     document.getElementById("dropdown").innerHTML = ourData[1];
@@ -254,11 +255,11 @@ function updateData(){
             //toggle hidden div's
             document.getElementById('formedit').hidden = true;
             document.getElementById('tableform').hidden = false;
-            location.reload();   
+            location.reload();
         }
     };
-
-
+    
+    
     switch(caller1){
         case "adduser"://incase of new user
             xhr.open("POST", "assets/php/adduser.php", true);
@@ -288,7 +289,7 @@ function deleteUser(uid){
             console.log(xhr.responseText + "admin Hell1");
             document.getElementById('formedit').hidden = true;
             document.getElementById('tableform').hidden = false;
-            location.reload(); 
+            location.reload();
             
         }
     };
@@ -304,3 +305,4 @@ function backB(){
     document.getElementById('formedit').hidden = true;
     document.getElementById('tableform').hidden = false;
 }
+
