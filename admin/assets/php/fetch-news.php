@@ -1,5 +1,6 @@
 <?php
 	require "init.php";
+    
     $sql = "SELECT * FROM `news`";
 	$result = $con->query($sql);
 	$number = 4;

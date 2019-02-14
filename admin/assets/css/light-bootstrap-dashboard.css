@@ -1014,7 +1014,7 @@ fieldset[disabled] .btn-neutral.active {
     -webkit-box-shadow: none;
     box-shadow: none;
     outline: 0 !important;
-    color: #FFFFFF;
+    color: #000000;
 }
 
 .has-success .form-control,

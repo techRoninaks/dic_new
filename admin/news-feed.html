@@ -47,7 +47,7 @@
                                 <p class="category">Control your news feed</p><br>
                                 <pre><button class="button3 button3" style="vertical-align:middle" onclick="hideShow()"><span>Add New</span></button><button class="button3 button3" style="vertical-align:middle" onclick="delete_news(-1);"><span>Clear all</span></button></pre><br>
                                 <div style="display:none;" id="addNews">
-                                <form enctype="multipart/form-data" action="upload-news.php" method="post">
+                                <form enctype="multipart/form-data" action="assets/php/upload-news.php" method="post">
                                     <input type="textbox" id="editId" name="editId" style='display:none'><br>
                                     <label>Headline</label><p style="display:inline" class='rq'>*</p>
                                     <textarea class="form-control" name="Headline" placeholder="Headline" data-form-field="Headline" id="Headline" required></textarea>
@@ -109,6 +109,7 @@
 	  <script src="assets/js/demo.js"></script>
 
     <script type="text/javascript">
+	    checksession();
 	    includeHTML();
         fetch_news();
 	</script>
