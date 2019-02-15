@@ -30,11 +30,13 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <script type="text/javascript" src='assets/js/scripts.js'> </script>
 </head>
 <body>
 
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg" w3-include-html="sidenav.html"></div>
+    <script type="text/javascript">includeHTML();</script>
     <div class="main-panel">
     <div w3-include-html="header.html"></div>
         <div class="content">
@@ -85,6 +87,7 @@
 </div>
 
 
+
 </body>
 
         <!--   Core JS Files   -->
@@ -110,7 +113,13 @@
 
     <script type="text/javascript">
 	    checksession();
-	    includeHTML();
+	    // includeHTML();
         fetch_news();
-	</script>
+    </script>
+    
+    <script>
+        window.onload = function(){
+            document.getElementById("news").classList.add('active');
+        }
+    </script>
 </html>

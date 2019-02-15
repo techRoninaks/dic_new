@@ -40,8 +40,12 @@
 
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg" w3-include-html="sidenav.html"></div>
-    <div w3-include-html="header.html"></div>
-    <footer class="footer" w3-include-html="footer.html"></footer>
+    <script type="text/javascript">includeHTML();</script>
+    <div class="main-panel">
+        <div w3-include-html="header.html"></div>
+        <footer class="footer" w3-include-html="footer.html"></footer>
+    </div>
+
     </div>
 </div>
 
@@ -68,15 +72,12 @@
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="assets/js/demo.js"></script>
 
-	<script type="text/javascript">
-    		includeHTML();
-		$(document).ready(function(){
-        	demo.initChartist();
 
-    	});
-		window.onload = function(){
-			document.getElementsByClassName('navbar-brand')[0].innerHTML = "Test";
-		};
-	</script>
+    <script>
+        window.onload = function(){
+            document.getElementById("dashboard").classList.add('active');
+        }
+    </script>
+
 
 </html>
