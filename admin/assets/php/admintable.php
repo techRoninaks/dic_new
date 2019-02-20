@@ -17,7 +17,7 @@
         // echo $count;
         }
         echo ":";
-        $sql_query = "SELECT * FROM `admin_type` ";
+        $sql_query = "SELECT * FROM `admin_role` ";
         $result =  mysqli_query($con,$sql_query);
         while($row=mysqli_fetch_array($result)){
                 echo "<li><a onclick="."replaceText('$row[1]');".">".$row[1]."</a></li>";

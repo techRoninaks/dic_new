@@ -1,3 +1,7 @@
+var caller1 = "";
+var uid;
+var data;
+
 function includeHTML() {
     var z, i, elmnt, file, xhttp;
     /* Loop through a collection of all HTML elements: */
@@ -135,10 +139,6 @@ function edit_news(id){
     xhr.send(params);
 }
 
-var caller1 = "";
-var uid;
-var data;
-
 function checksession() {
     var xhr =  new XMLHttpRequest();
     this.responseType = 'text';
@@ -174,7 +174,7 @@ function checksession() {
 //to toggle hidden div's incase of adduser
   function addrow(caller){
     caller1 = caller;
-    console.log("editcaller" + caller);
+    // console.log("editcaller" + caller);
     document.getElementById('formedit').hidden = false;
     document.getElementById('tableform').hidden = true;
     //reseting the value of form
@@ -183,6 +183,10 @@ function checksession() {
         document.getElementById("formdata2").value = "Email"; 
         document.getElementById("formdata3").value = "Password"; 
         document.getElementById("input").innerHTML = "Previlage" +"<b class='caret'></b>";
+    }
+    if(caller =="addrole"){
+        document.getElementById("formdata1").value = "Role Name"; 
+        caller1 = "addrole"
     }
   }
 
@@ -210,6 +214,26 @@ function checksession() {
 //Replace  caret on form 
 function replaceText(str){
     document.getElementById('input').innerHTML = str +"<b class='caret'></b>";
+}
+function loadtablerole(){
+    var xhr =  new XMLHttpRequest();
+    this.responseType = 'text';
+    xhr.onreadystatechange  =  function() {
+        
+        var ourData = xhr.response;
+        if (this.readyState == 4 && this.status == 200) {//if result successful
+            var ourData = xhr.responseText;
+            data =xhr.responseText.split(":");
+            document.getElementById('roleHeader').innerHTML = data[0]; 
+            document.getElementById('checkBox').innerHTML = data[1];
+            document.getElementById('myTable').innerHTML = data[2]; 
+        }
+        
+    };
+
+    xhr.open("GET", "assets/php/adminrole.php", true);
+    xhr.setRequestHeader("Content-type", "text/plain");
+    xhr.send();
 }
 
 
@@ -304,3 +328,107 @@ function backB(){
     document.getElementById('formedit').hidden = true;
     document.getElementById('tableform').hidden = false;
 }
+
+//Update role based access
+function updateRole(){
+    var data1 = document.getElementById("formdata1").value;
+    if(data1 == "Role Name")
+        alert("Role Name is not a valid parameter.");
+    else if(data1 == "role name")
+        alert("role name is not a valid parameter.");
+    else{
+    var params = "name=" + data1;
+    
+    var value = document.getElementById("roleupdateform").elements.length;
+    for ( i=1;i<value-2; i++){
+        params = params +"&value"+i+"="+ document.getElementById("roleupdateform").elements[i].checked.toString()
+    }
+    // console.log(params);
+    var xhr =  new XMLHttpRequest();
+    this.responseType = 'text';
+    xhr.onreadystatechange  =  function() {
+        var ourData = xhr.response;
+        if (this.readyState == 4 && this.status == 200) {//if result successful
+            // console.log(xhr.responseText + "admin Hell1");
+            //toggle hidden div's
+            document.getElementById('formedit').hidden = true;
+            document.getElementById('tableform').hidden = false;
+            location.reload();   
+        }
+    };
+    switch (caller1){
+        case "addrole": 
+            xhr.open("POST", "assets/php/addrole.php", true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            // console.log(params);
+            xhr.send(params);
+            break;
+        case "editrole": 
+            // console.log("editrole");
+            xhr.open("POST", "assets/php/updaterole.php", true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            params = params + "&uid=" + uid
+            // console.log(params);
+            xhr.send(params);
+            break;
+    }
+
+ }
+}
+
+
+function editRowRole(caller, id){
+    uid = id;
+    caller1 = caller;
+    document.getElementById('formedit').hidden = false;
+    document.getElementById('tableform').hidden = true;
+    // console.log(caller1);
+    //fetching data from table to e passed to edit form
+    var rolename = document.getElementById(uid+"1").innerText;
+    var user =  document.getElementById(uid+"2").innerText;
+    var rolemanage =  document.getElementById(uid+"3").innerText;
+    var report =  document.getElementById(uid+"4").innerText;
+    var news =  document.getElementById(uid+"5").innerText;
+    var slider =  document.getElementById(uid+"6").innerText;
+    if(caller =="editrole"){
+        document.getElementById("formdata1").value = rolename; 
+        document.getElementById("formdata2").checked = dataRoleCheck(user);
+        document.getElementById("formdata3").checked = dataRoleCheck(rolemanage);
+        document.getElementById("formdata4").checked = dataRoleCheck(report);
+        document.getElementById("formdata5").checked = dataRoleCheck(news); 
+        document.getElementById("formdata6").checked = dataRoleCheck(slider);
+        // caller1 = "editrole"
+    }
+
+
+  }
+
+
+  function dataRoleCheck(data){
+    if(data == 1) {
+        return true;
+    } 
+    else  
+        return false ;
+  }
+
+  function deleteRole(id){
+    var xhr =  new XMLHttpRequest();
+    this.responseType = 'text';
+    xhr.onreadystatechange  =  function() {
+        var ourData = xhr.response;
+        if (this.readyState == 4 && this.status == 200) {//if result successful
+            console.log(xhr.responseText + "admin Hell1");
+            document.getElementById('formedit').hidden = true;
+            document.getElementById('tableform').hidden = false;
+            location.reload(); 
+            
+        }
+    };
+    if(confirm("Are you sure? About deleting this row.")){
+        xhr.open("POST", "assets/php/deleterole.php", true);//php for deleting user with id
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        var params = 'uid='+id;
+        xhr.send(params);
+    }
+  }
