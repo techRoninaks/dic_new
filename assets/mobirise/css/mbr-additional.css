@@ -3976,7 +3976,9 @@ body {
   color: #767676;
 }
 .cid-rfe4Z4nlUf .container-table {
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-left: 6px;
+
 }
 .cid-rfe4Z4nlUf .scroll {
   overflow-x: auto;
