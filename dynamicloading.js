@@ -46,7 +46,7 @@ function showData(str, caller1) {
             document.getElementById(newstr[0]).innerHTML = ourData[0];
             break;
         case "vya":
-            console.log(newstr[0]+" hell "+ ourData[0]);
+            //console.log(newstr[0]+" hell "+ ourData[0]);
             document.getElementById(newstr[0]).innerHTML = ourData[0];
             break;
 
