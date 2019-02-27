@@ -1,0 +1,10 @@
+[21-Feb-2019 13:09:25 Etc/GMT] PHP Warning:  mysqli::__construct(): (42000/1044): Access denied for user 'dictcrco_admin'@'localhost' to database 'dictcrco_admin' in /home/dictcrco/public_html/init.php on line 7
+[21-Feb-2019 13:09:42 Etc/GMT] PHP Warning:  mysqli::__construct(): (42000/1044): Access denied for user 'dictcrco_admin'@'localhost' to database 'dictcrco_admin' in /home/dictcrco/public_html/init.php on line 7
+[21-Feb-2019 13:11:29 Etc/GMT] PHP Warning:  mysqli::__construct(): (42000/1044): Access denied for user 'dictcrco_admin'@'localhost' to database 'dictcrco_admin' in /home/dictcrco/public_html/init.php on line 7
+[21-Feb-2019 13:17:38 Etc/GMT] PHP Warning:  mysqli::__construct(): (42000/1044): Access denied for user 'dictcrco_admin'@'localhost' to database 'dictcrco_admin' in /home/dictcrco/public_html/init.php on line 7
+[21-Feb-2019 13:19:03 Etc/GMT] PHP Warning:  mysqli::__construct(): (42000/1044): Access denied for user 'dictcrco_admin'@'localhost' to database 'dictcrco_admin' in /home/dictcrco/public_html/init.php on line 7
+[21-Feb-2019 13:19:27 Etc/GMT] PHP Warning:  mysqli::__construct(): (42000/1044): Access denied for user 'dictcrco_admin'@'localhost' to database 'dictcrco_admin' in /home/dictcrco/public_html/init.php on line 7
+[21-Feb-2019 13:20:05 Etc/GMT] PHP Warning:  mysqli::__construct(): (42000/1044): Access denied for user 'dictcrco_admin'@'localhost' to database 'dictcrco_admin' in /home/dictcrco/public_html/init.php on line 7
+[21-Feb-2019 13:28:49 Etc/GMT] PHP Warning:  mysqli::__construct(): (42000/1044): Access denied for user 'dictcrco_admin'@'localhost' to database 'dictcrco_admin' in /home/dictcrco/public_html/init.php on line 7
+[21-Feb-2019 13:42:36 Etc/GMT] PHP Warning:  mysqli::__construct(): (42000/1044): Access denied for user 'dictcrco_admin'@'localhost' to database 'dictcrco_admin' in /home/dictcrco/public_html/init.php on line 7
+[21-Feb-2019 16:28:05 Etc/GMT] PHP Warning:  mysqli::__construct(): (42000/1044): Access denied for user 'dictcrco_admin'@'localhost' to database 'dictcrco_admin' in /home/dictcrco/public_html/init.php on line 7

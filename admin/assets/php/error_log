@@ -1,0 +1,17 @@
+[21-Feb-2019 13:19:53 Etc/GMT] PHP Notice:  Undefined index: check in /home/dictcrco/public_html/admin/assets/php/sessionvalidator.php on line 4
+[21-Feb-2019 13:19:53 Etc/GMT] PHP Warning:  mysqli::__construct(): (42000/1044): Access denied for user 'dictcrco_admin'@'localhost' to database 'dictcrco_admin' in /home/dictcrco/public_html/admin/assets/php/init.php on line 7
+[22-Feb-2019 05:31:41 Etc/GMT] PHP Notice:  Undefined index: check in /home/dictcrco/public_html/admin/assets/php/sessionvalidator.php on line 4
+[22-Feb-2019 05:31:42 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/dictcrco/public_html/admin/assets/php/admintable.php on line 22
+[22-Feb-2019 05:34:32 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/dictcrco/public_html/admin/assets/php/admintable.php on line 22
+[22-Feb-2019 06:59:51 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/dictcrco/public_html/admin/assets/php/admintable.php on line 22
+[22-Feb-2019 07:00:38 Etc/GMT] PHP Notice:  Undefined index: check in /home/dictcrco/public_html/admin/assets/php/sessionvalidator.php on line 4
+[22-Feb-2019 07:01:31 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/dictcrco/public_html/admin/assets/php/admintable.php on line 22
+[22-Feb-2019 07:01:59 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/dictcrco/public_html/admin/assets/php/admintable.php on line 22
+[22-Feb-2019 09:40:42 Etc/GMT] PHP Notice:  Undefined index: check in /home/dictcrco/public_html/admin/assets/php/sessionvalidator.php on line 4
+[22-Feb-2019 09:43:52 Etc/GMT] PHP Notice:  Undefined index: check in /home/dictcrco/public_html/admin/assets/php/sessionvalidator.php on line 4
+[22-Feb-2019 09:43:52 Etc/GMT] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/dictcrco/public_html/admin/assets/php/admintable.php on line 22
+[22-Feb-2019 14:06:10 Etc/GMT] PHP Notice:  Undefined index: check in /home/dictcrco/public_html/admin/assets/php/sessionvalidator.php on line 4
+[27-Feb-2019 11:22:52 Etc/GMT] PHP Notice:  Undefined index: check in /home/dictcrco/public_html/admin/assets/php/sessionvalidator.php on line 4
+[27-Feb-2019 11:22:57 Etc/GMT] PHP Notice:  Undefined index: check in /home/dictcrco/public_html/admin/assets/php/sessionvalidator.php on line 4
+[27-Feb-2019 11:50:30 Etc/GMT] PHP Notice:  Undefined index: check in /home/dictcrco/public_html/admin/assets/php/sessionvalidator.php on line 4
+[27-Feb-2019 11:51:57 Etc/GMT] PHP Notice:  Undefined index: check in /home/dictcrco/public_html/admin/assets/php/sessionvalidator.php on line 4
