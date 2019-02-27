@@ -1,7 +1,7 @@
 <?php 
-    $dbname = "u694003942_dicd";
-    $username = "u694003942_dicd";
-    $password = "qwerty";
+    $dbname = "dictcrco_admin";
+    $username = "dictcrco_admin";
+    $password = "P@ssw0rd";
     $servername = "localhost";
     // Create connection
     $con = new mysqli($servername, $username, $password, $dbname);

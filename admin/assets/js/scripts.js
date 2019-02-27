@@ -96,7 +96,7 @@ function read_news(id){
     xhr.send(params);
 }
 function load_page(){
-    var page = window.location.protocol+"//"+window.location.hostname+"/dic-repo/admin/news-feed.html";
+    var page = window.location.protocol+"//"+window.location.hostname+"/admin/news-feed.html";
     window.location = page;
 }
 function show_image(id){
