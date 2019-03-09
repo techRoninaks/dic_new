@@ -60,21 +60,10 @@
 
 
 <?php
-  $dbname = "db_dic";
-    $username = "root";
-    $password = "";
-    $servername = "localhost";
-
-  // Create connection
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  // Check connection
-  if ($conn->connect_error) {
-     // die("Connection failed: " . $conn->connect_error);
-  } 
   $split = 0;
 
   $sql = "SELECT * FROM `news` order by 'ID' desc";
-  $result = $conn->query($sql);
+  $result = $con->query($sql);
    // $number = 3;
   ?>
   <section class="features17 cid-rfe8POrb7e" id="features17-1z">
