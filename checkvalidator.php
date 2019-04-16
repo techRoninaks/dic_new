@@ -18,7 +18,7 @@
                  $_SESSION["type"] = $row[4];
                  $_SESSION["check"] = "check";
                  session_commit();
-                 echo "check:admin/dashboard.html" ;
+                 echo "check:admin/user.html" ;
                  $flag =1;
                  break;
              }
@@ -33,7 +33,7 @@
                  $_SESSION["username"] = $name;
                  $_SESSION["password"] = $Password;
                  session_commit();
-                 echo "check:admin/dashboard.html" ;
+                 echo "check:admin/user.html" ;
                  $flag =1;
                  break;
              }
